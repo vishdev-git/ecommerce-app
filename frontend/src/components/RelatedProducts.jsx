@@ -17,6 +17,8 @@ const RelatedProducts = ({ category, subCategory, productId }) => {
             setRelated(productsCopy.slice(0,5))
         }
     }, [products])
+
+
     return (
         <div className='my-24'>
             <div className="text-center text-3xl py-2">

@@ -9,6 +9,18 @@ const PlaceOrder = () => {
 
   const [method, setMethod] = useState('cod');
   const { navigate } = useContext(ShopContext)
+  const [formData, setFormData] = useState({
+    firstName:'',
+    lastName:'',
+    email:'',
+    street:'',
+    city:'',
+    state:'',
+    zipcode:'',
+    country:'',
+    phone:'',
+  
+  })
 
   return (
     <div className='flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t'>
