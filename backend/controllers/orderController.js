@@ -1,5 +1,5 @@
 import orderModel from "../models/orderModel.js";
-import userModel from "../models/userModel";
+import userModel from "../models/userModel.js";
 
 
 // Placing Order using COD
@@ -38,7 +38,8 @@ const placeOrderStripe = async (req, res) => {
 
 
     } catch (error) {
-
+        console.log(error)
+        res.json({success:false,nessage:error.nessage})
     }
 }
 
@@ -49,7 +50,8 @@ const placeOrderRazorpay = async (req, res) => {
 
 
     } catch (error) {
-
+        console.log(error)
+        res.json({success:false,nessage:error.nessage})
     }
 }
 
@@ -58,7 +60,8 @@ const allOrders = async (req, res) => {
     try {
 
     } catch (error) {
-
+        console.log(error)
+        res.json({success:false,nessage:error.nessage})
     }
 
 }
@@ -67,8 +70,13 @@ const allOrders = async (req, res) => {
 const userOrders = async (req, res) => {
     try {
 
-    } catch (error) {
+        const { userId } = req.body
+        const orders = await orderModel.find({ userId })
+        res.json({success:true,orders})
 
+    } catch (error) {
+        console.log(error)
+        res.json({success:false,nessage:error.nessage})
     }
 
 }
@@ -78,7 +86,8 @@ const updateStatus = async (req, res) => {
     try {
 
     } catch (error) {
-
+        console.log(error)
+        res.json({success:false,nessage:error.nessage})
     }
 }
 

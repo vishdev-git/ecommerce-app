@@ -4,7 +4,10 @@ import Title from '../components/Title'
 
 const Orders = () => {
 
-  const {products, currency } = useContext(ShopContext)
+  const { backendUrl, token,  currency } = useContext(ShopContext)
+  
+  const [orderData, setOrderData ] = useState([])
+
 
   return (
     <div className='border-t pt-16'>
