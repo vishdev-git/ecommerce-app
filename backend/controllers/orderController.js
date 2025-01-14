@@ -210,7 +210,7 @@ const verifyRazorpay = async(req,res)=>{
         const { userId, razorpay_order_id } = req.body
         const orderInfo = await razorpayInstance.orders.fetch(razorpay_order_id)
         console.log('Order info : ',orderInfo)
-        if(orderInfo.status === 'attempted'){
+        if(orderInfo.status === 'attempt'){
             await orderModel.findByIdAndUpdate(orderInfo.receipt,{payment:true});
             await userModel.findByIdAndUpdate(userId,{cartData:{}})
             res.json({success:true,message:'Payment Successful'})
