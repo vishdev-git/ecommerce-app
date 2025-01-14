@@ -89,6 +89,7 @@ const ShopContextProvider = (props) => {
         let totalAmount = 0;
         for (const items in cartItems) {
             let itemInfo = products.find((product) => product._id === items);
+           
             for (const item in cartItems[items]) {
                 try {
                     if (cartItems[items][item] > 0) {
@@ -137,12 +138,13 @@ const ShopContextProvider = (props) => {
         getProductsData();
     }, []);
 
-    useEffect(()=>{
-        if(!token && localStorage.getItem('token') ){
-            setToken(localStorage.getItem('token'))
-            getUserCart()
-        }
-    })
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+        setToken(storedToken);
+        getUserCart(storedToken);  // Pass the token to fetch the cart data
+    }
+}, []);
 
     const value = {
         products,
